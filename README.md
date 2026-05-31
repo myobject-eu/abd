@@ -4,7 +4,7 @@ ABD is a structured method for developing software with LLM agents. It defines h
 
 ABD does not replace traditional software analysis. Macro analysis, micro analysis, use cases, and domain modeling remain the starting point of any serious project and must be completed before ABD begins. ABD is the bridge between that analysis and the code: the mechanism that transforms ratified decisions into a structured context that an LLM agent can execute without ambiguity or contradiction.
 
-ABD is the operational extension of [ADEXMO](https://github.com/myodevops/adexmo): it defines the guidelines for applying the ADEXMO pattern with LLM agents in a structured, layered, and traceable way.
+ABD is the operational extension of [ADEXMO](https://github.com/myobject-eu/adexmo): it defines the guidelines for applying the ADEXMO pattern with LLM agents in a structured, layered, and traceable way.
 
 ---
 
