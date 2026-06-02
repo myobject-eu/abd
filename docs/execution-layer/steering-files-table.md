@@ -4,7 +4,7 @@
 
 This document is the authoritative reference for the Steering Files used in ABD projects. It declares the complete list of Steering Files, their function, the layer in which they are produced, and the conditions under which they are required.
 
-Claude Code reads this document as part of the Execution Layer Setup to determine which Steering Files apply to the current project. The CLAUDE.md of each project references only the Steering Files declared as applicable here.
+The coding agent reads this document as part of the Execution Layer Setup to determine which Steering Files apply to the current project. The AGENTS.md of each project references only the Steering Files declared as applicable here.
 
 ---
 
@@ -21,7 +21,7 @@ Claude Code reads this document as part of the Execution Layer Setup to determin
 | `security-model.md` | Application security model: Identity Management, Authentication, Session Management, Authorization, Access Control, Auditing, Accountability | When the project includes user management or event tracking |
 | `ui-spec.md` | UI framework, components, design tokens, layout conventions, and screen flows derived from the Actions List | When the project includes a UI |
 | `action-dependencies.md` | Dependencies between Actions in adjacency list format, classified as hard or soft, ordered by topological sort | When dependencies exist between Actions |
-| `CLAUDE.md` | Automatic entry point for Claude Code: references all applicable Steering Files, declares development rules and project-specific constraints | Always |
+| `AGENTS.md` | Automatic entry point for the coding agent: references all applicable Steering Files, declares development rules and project-specific constraints | Always |
 
 ---
 
@@ -38,7 +38,7 @@ Claude Code reads this document as part of the Execution Layer Setup to determin
 | `security-model.md` | if needed | if needed | if needed | yes | yes | yes |
 | `ui-spec.md` | no | yes | yes | if needed | if needed | if needed |
 | `action-dependencies.md` | if needed | if needed | if needed | if needed | if needed | if needed |
-| `CLAUDE.md` | yes | yes | yes | yes | yes | yes |
+| `AGENTS.md` | yes | yes | yes | yes | yes | yes |
 
 ---
 
@@ -73,4 +73,4 @@ Each Steering File has a corresponding definition document in `docs/execution-la
 | `security-model.md` | `docs/execution-layer/security-model-definition.md` |
 | `ui-spec.md` | `docs/execution-layer/ui-spec-definition.md` |
 | `action-dependencies.md` | `docs/execution-layer/action-dependencies-definition.md` |
-| `CLAUDE.md` | `docs/execution-layer/CLAUDE-definition.md` |
+| `AGENTS.md` | `docs/execution-layer/AGENTS-definition.md` |

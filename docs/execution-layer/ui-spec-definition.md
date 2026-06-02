@@ -71,7 +71,7 @@ Required fields:
 - Last validation date: the date the human last validated the file
 - Status: Draft or Validated
 
-The file is not considered usable by Claude Code until Status is Validated.
+The file is not considered usable by the coding agent until Status is Validated.
 
 ---
 
@@ -143,7 +143,7 @@ paging and sorting without a perceptible refresh of the whole control.
 - A client side datatable carries an explicit motivation for the deviation
 - A server side datatable has its corresponding endpoint and binding entry in
   the transport and binding contracts
-- The human validates the file before Claude Code starts code generation
+- The human validates the file before the coding agent starts code generation
 
 ---
 

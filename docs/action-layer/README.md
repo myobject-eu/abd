@@ -4,7 +4,7 @@
 
 The Action Layer is the second level of the Action-Based Development (ABD) method. It translates the decisions ratified in the Decision Layer into an executable contract: the Actions List.
 
-The Actions List defines what the system does, independently of how it exposes it. It is the shared reference between analysis, implementation, and separate teams. It is the precise instruction that Claude Code receives for code generation.
+The Actions List defines what the system does, independently of how it exposes it. It is the shared reference between analysis, implementation, and separate teams. It is the precise instruction that the coding agent receives for code generation.
 
 ## Core tool
 

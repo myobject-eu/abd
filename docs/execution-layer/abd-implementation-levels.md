@@ -1,6 +1,6 @@
 # ABD – Implementation Levels
 
-Recommended project structure for any ABD project. The `abd/` directory resides in the project root, alongside the native framework structure.
+Recommended implementation profile for ABD projects. The `abd/` directory resides in the project root, alongside the native framework structure. This profile is a default, not a constraint: deviations are explicit human decisions.
 
 ## Directory Structure
 
@@ -28,27 +28,28 @@ abd/
 
 ## Implementation Levels
 
-**Action Level**
-Contains the Actions derived from the Actions List. Each Action is a dedicated file, grouped by Domain. Implements the defined contract: input, output, business rules. Calls only Service Level methods.
+**Action Level** 
+Contains the Actions derived from the Actions List. Each Action is a dedicated file, grouped by Domain. Implements the defined contract: input, output, business rules. By default, calls only Service Level methods.
 
-**Service Level**
-Contains the business logic methods called by Actions. Methods are abstract and framework-independent. No direct Models, no database queries, no external library calls. Delegates persistence to the framework Data Access Layer and external dependencies to the Integration Level.
+**Service Level** 
+Contains the business logic methods called by Actions. Methods are abstract and framework-independent. By default, no direct Models, no database queries, no external library calls. Delegates persistence to the framework Data Access Layer and external dependencies to the Integration Level.
 
 Example for Action `user:create`:
+
 ```
 UserManagement::GetUserByEmail
 UserManagement::InsertUser
 UserManagement::LoginUser
 ```
 
-**Integration Level**
+**Integration Level** 
 Contains wrappers for external dependencies: third-party libraries, external APIs, authentication services, document generators. Isolates external dependencies from the Service Level. If a library is replaced, the change is localized here.
 
 ## Rules
 
-- Actions call only Service Level methods.
-- Service Level methods do not contain direct external dependencies.
-- Integration Level isolates all third-party libraries and external APIs.
+- By default, Actions call only Service Level methods. Deviations are explicit human decisions.
+- By default, Service Level methods do not contain direct external dependencies. Deviations are explicit human decisions.
+- By default, Integration Level isolates all third-party libraries and external APIs. Deviations are explicit human decisions.
 - The framework lives in its native structure. `abd/` sits alongside it.
-- If Claude Code detects a level violation, it warns the developer before proceeding.
-- This structure is recommended, not imposed. Deviations are explicit human decisions.
+- If the coding agent detects a level violation, it warns the developer before proceeding, without blocking generation.
+- This structure is a recommended implementation profile for ABD, not a core constraint of the method.

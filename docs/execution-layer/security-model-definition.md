@@ -6,7 +6,7 @@ This document defines the template for the `security-model.md` Steering File in 
 
 `security-model.md` declares the application security choices of the project: for each area covered, the adopted system and the library that implements it. The file is produced and validated during the Execution Layer Setup.
 
-Claude Code reads `security-model.md` before generating any code related to identity, authentication, sessions, authorization, access control, or event tracking. The library declared for each area is the one Claude Code uses in the implementation, consistently with `integration-config.md`.
+The coding agent reads `security-model.md` before generating any code related to identity, authentication, sessions, authorization, access control, or event tracking. The library declared for each area is the one the coding agent uses in the implementation, consistently with `integration-config.md`.
 
 ---
 

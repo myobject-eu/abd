@@ -93,7 +93,7 @@ Required fields:
 - Last validation date: the date the human last validated the file
 - Status: Draft or Validated
 
-The file is not considered usable by Claude Code until Status is Validated.
+The file is not considered usable by the coding agent until Status is Validated.
 
 ---
 
@@ -149,7 +149,7 @@ consequence for this file depends on the mode:
   starts
 - Every binding names the Action the controller invokes
 - A controller contains no application logic
-- The human validates the file before Claude Code starts code generation
+- The human validates the file before the coding agent starts code generation
 - When the UI specification selects a server side datatable, the binding
   references the endpoint declared in the transport contract
 

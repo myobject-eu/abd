@@ -96,7 +96,7 @@ Required fields:
 - Last validation date: the date the human last validated the file
 - Status: Draft or Validated
 
-The file is not considered usable by Claude Code until Status is Validated.
+The file is not considered usable by the coding agent until Status is Validated.
 
 ---
 
@@ -150,7 +150,7 @@ to schema data, for consistency with `database-schema.md`.
 - Every endpoint names the Action it invokes
 - Every endpoint declares a visibility attribute and an authentication scheme
 - An endpoint contains no application logic
-- The human validates the file before Claude Code starts code generation
+- The human validates the file before the coding agent starts code generation
 - When the UI specification selects a server side datatable, the corresponding
   endpoint is declared here
 

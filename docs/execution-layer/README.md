@@ -1,19 +1,19 @@
 # Execution Layer
 
-The Execution Layer is the phase of ABD in which Claude Code generates the project code. It follows the Action Layer, which produces the Actions List, and the Decision Layer, which ratifies the architectural choices. By the time the Execution Layer starts, all decisions have been made and validated. The Execution Layer translates them into working code.
+The Execution Layer is the phase of ABD in which the coding agent generates the project code. It follows the Action Layer, which produces the Actions List, and the Decision Layer, which ratifies the architectural choices. By the time the Execution Layer starts, all decisions have been made and validated. The Execution Layer translates them into working code.
 
 The Execution Layer has two distinct moments.
 
-**Execution Layer Setup** is the preparation phase. Starting from the Actions List and the ratified architectural choices, the human and Claude Code produce the Steering Files: a set of structured Markdown documents that together constitute the complete operational context for code generation. No code is written during Setup. The output is a fully populated `abd/` directory in the development project, capped by a `CLAUDE.md` that references all applicable Steering Files.
+**Execution Layer Setup** is the preparation phase. Starting from the Actions List and the ratified architectural choices, the human and the coding agent produce the Steering Files: a set of structured Markdown documents that together constitute the complete operational context for code generation. No code is written during Setup. The output is a fully populated `abd/` directory in the development project, capped by an `AGENTS.md` that references all applicable Steering Files.
 
-**Execution Layer Process** is the generation phase. Claude Code reads `CLAUDE.md`, loads all referenced Steering Files, and develops the Actions one by one following the order declared in `action-dependencies.md`. Each Action is developed, tested, and validated before the next one starts. The human reviews and approves each output before Claude Code proceeds.
+**Execution Layer Process** is the generation phase. The coding agent reads `AGENTS.md`, loads all referenced Steering Files, and develops the Actions one by one following the order declared in `action-dependencies.md`. Each Action is developed, tested, and validated before the next one starts. The human reviews and approves each output before the coding agent proceeds.
 
 ---
 
 ## What is in this directory
 
 | File or directory | Contents |
-|---|---|
+| --- | --- |
 | `steering-files-table.md` | Authoritative list of all Steering Files: function, applicability, and reference to each definition document |
 | `actions-list-definition.md` | Template and compilation rules for `actions-list.md` |
 | `stack-config-definition.md` | Template and compilation rules for `stack-config.md` |
@@ -24,7 +24,7 @@ The Execution Layer has two distinct moments.
 | `security-model-definition.md` | Template and compilation rules for `security-model.md` |
 | `ui-spec-definition.md` | Template and compilation rules for `ui-spec.md` |
 | `action-dependencies-definition.md` | Template and compilation rules for `action-dependencies.md` |
-| `CLAUDE-definition.md` | Template and compilation rules for `CLAUDE.md`, with an introduction to how Claude Code uses the file |
+| `AGENTS-definition.md` | Template and compilation rules for `AGENTS.md`, with agent compatibility reference and notes on vendor-specific redirect files |
 
 The `presets/` directory at the repository root contains precompiled Steering Files for common stack combinations, ready to be used as a starting point in a development project.
 
@@ -42,7 +42,7 @@ docs/execution-layer/   abd/
   security-model-         security-model.md
     definition.md   →     (compiled from template)
   ...                     ...
-                          CLAUDE.md
+                          AGENTS.md
 ```
 
 ---

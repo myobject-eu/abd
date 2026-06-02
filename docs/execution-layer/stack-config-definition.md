@@ -68,7 +68,7 @@ Required fields:
 - Last validation date: the date the human last validated the file
 - Status: Draft or Validated
 
-The file is not considered usable by Claude Code until Status is Validated.
+The file is not considered usable by the coding agent until Status is Validated.
 
 ---
 
@@ -126,7 +126,7 @@ abd/
 └── integration/
 ```
 
-The section states that Claude Code generates code respecting the three
+The section states that the coding agent generates code respecting the three
 Implementation Levels, that Actions call only Service Level methods, and that
 the Service Level delegates external dependencies to the Integration Level.
 
@@ -153,7 +153,7 @@ document generator, an OAuth provider belong to `integration-config.md`.
 - The file is compiled during Execution Layer Setup, before code generation
   starts
 - Every Source entry must point to a ratified decision
-- The human validates the file before Claude Code starts code generation
+- The human validates the file before the coding agent starts code generation
 - Once validated, the foundations stay stable for the whole project
 - A change to the foundations requires re-evaluating the technical constraints
   in the Decision Layer and re-running the Decision Layer exit gate
@@ -206,5 +206,5 @@ Rules:
 - Actions in the Action Level call only Service Level methods
 - Service Level methods contain no direct external dependencies
 - External dependencies are delegated to the Integration Level
-- Claude Code warns the developer when it detects a level violation
+- The coding agent warns the developer when it detects a level violation
 ```

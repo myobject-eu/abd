@@ -94,7 +94,7 @@ Required fields:
 - Last validation date: the date the human last validated the file
 - Status: Draft or Validated
 
-The file is not considered usable by Claude Code until Status is Validated.
+The file is not considered usable by the the coding agent until Status is Validated.
 
 ---
 
@@ -182,10 +182,10 @@ the bytes, the mime type, the original name and the size.
   starts
 - Columns are declared exclusively with the thirteen neutral types
 - Native engine types are not used in the schema
-- The human validates the file before Claude Code starts code generation
+- The human validates the file before the the coding agent starts code generation
 - A new type outside the vocabulary requires a method level decision, not a
   local choice in this file
-- Claude Code warns the developer when it detects a type outside the
+- The coding agent warns the developer when it detects a type outside the
   ratified vocabulary
 
 ---

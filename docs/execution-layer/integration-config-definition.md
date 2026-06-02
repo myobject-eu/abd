@@ -53,7 +53,7 @@ which external dependencies the project has adopted and why.
 `integration-config.md` is that declaration. It is the explicit, traceable
 registry of the Integration Level.
 
-It also enforces consistency. Without a registry, Claude Code can adopt one
+It also enforces consistency. Without a registry, the coding agent can adopt one
 library for a capability in one Action and a different library for the same
 capability in another Action, producing two wrappers for the same function.
 The registry makes one library per capability a verifiable rule.
@@ -105,7 +105,7 @@ External dependencies are recorded in a table.
   uses the same dependency. If QR code reading is covered by library A in one
   Action, it is covered by library A in every Action.
 - Before introducing a library for a capability already in the registry,
-  Claude Code adopts the dependency already recorded. It does not add a second
+  the coding agent adopts the dependency already recorded. It does not add a second
   one.
 - The Used by Actions column makes consistency verifiable: it shows, for each
   dependency, every Action that depends on it.
@@ -129,11 +129,11 @@ only when an Action that reads QR codes is built. The file is therefore:
 
 Every addition is a change to a Steering File. It requires explicit human
 validation, consistent with the iterative and supervised nature of the
-Execution Layer. Claude Code does not adopt a third party library until its
+Execution Layer. The coding agent does not adopt a third party library until its
 registry entry has been validated by the human.
 
-The CLAUDE.md references this file. Incremental additions to
-`integration-config.md` do not require updating the CLAUDE.md: the reference is
+The AGENTS.md references this file. Incremental additions to
+`integration-config.md` do not require updating the AGENTS.md: the reference is
 to the file, not to its content.
 
 ---
@@ -159,7 +159,7 @@ document generator, an OAuth provider belong to `integration-config.md`.
 - The file is initialized during Execution Layer Setup with the dependencies
   known from the Actions List
 - The file is updated incrementally during the Execution Layer
-- Every addition requires explicit human validation before Claude Code adopts
+- Every addition requires explicit human validation before the coding agent adopts
   the library
 - One library is adopted per capability
 - Every entry carries the Actions that use it, keeping consistency verifiable
@@ -201,6 +201,6 @@ Rules:
 - One library per capability
 - Every Action performing the same operation uses the same dependency
 - A new dependency is added only after explicit human validation
-- Claude Code adopts a dependency already in the registry before adding a new
+- The coding agent adopts a dependency already in the registry before adding a new
   one for the same capability
 ```

@@ -4,9 +4,9 @@
 
 This document defines the template for the `action-dependencies.md` Steering File in ABD projects.
 
-`action-dependencies.md` declares the dependencies between Actions using an adjacency list format. It serves two purposes: it maps the relationships between Actions across the entire system, and it provides Claude Code with an explicit development plan derived from the topological ordering of those relationships.
+`action-dependencies.md` declares the dependencies between Actions using an adjacency list format. It serves two purposes: it maps the relationships between Actions across the entire system, and it provides the coding agent with an explicit development plan derived from the topological ordering of those relationships.
 
-Claude Code reads `action-dependencies.md` before starting the development of any Action. It uses the file to determine which Actions are immediately developable, which are blocked by hard dependencies, and which order to follow across the development session.
+The coding agent reads `action-dependencies.md` before starting the development of any Action. It uses the file to determine which Actions are immediately developable, which are blocked by hard dependencies, and which order to follow across the development session.
 
 ---
 
@@ -16,7 +16,7 @@ Dependencies between Actions are classified as **hard** or **soft**.
 
 A dependency is **hard** when an Action cannot be correctly implemented without the dependency existing in the system. Hard dependencies are blocking: a dependent Action is not developed until all its hard dependencies are completed.
 
-A dependency is **soft** when an Action benefits from the presence of the dependency but can be implemented without it. Soft dependencies are not blocking: they signal a preferred relationship that Claude Code takes into account but that does not prevent development.
+A dependency is **soft** when an Action benefits from the presence of the dependency but can be implemented without it. Soft dependencies are not blocking: they signal a preferred relationship that the coding agent takes into account but that does not prevent development.
 
 ---
 
@@ -28,7 +28,7 @@ Dependencies are transversal across domains. An Action can depend on any other A
 
 ## Topological ordering
 
-Actions are grouped in the file according to topological sort order. This is the standard algorithm used by package managers and build systems to determine execution order in a directed acyclic graph. Claude Code reads the group order as a development plan and proceeds from top to bottom.
+Actions are grouped in the file according to topological sort order. This is the standard algorithm used by package managers and build systems to determine execution order in a directed acyclic graph. The coding agent reads the group order as a development plan and proceeds from top to bottom.
 
 | Group | Description | Developable |
 |---|---|---|
@@ -37,7 +37,7 @@ Actions are grouped in the file according to topological sort order. This is the
 | 3 | Actions with completed hard dependencies | As soon as their hard dependencies are done |
 | 4 | Actions with pending hard dependencies | Blocked, to be planned after group 3 |
 
-A circular hard dependency is a design error. Claude Code flags it and does not proceed until it is resolved.
+A circular hard dependency is a design error. The coding agent flags it and does not proceed until it is resolved.
 
 ---
 
@@ -114,7 +114,7 @@ When in doubt, classify as hard. A hard dependency that turns out to be soft is 
 - Every Action declared in `actions-list.md` must appear in `action-dependencies.md`
 - Actions not present in `actions-list.md` must not appear in `action-dependencies.md`
 - The file is updated whenever `actions-list.md` is modified: new Actions are added, removed Actions are deleted, and the topological ordering is recalculated
-- Claude Code verifies consistency between `action-dependencies.md` and `actions-list.md` before starting development of any Action
+- The coding agent verifies consistency between `action-dependencies.md` and `actions-list.md` before starting development of any Action
 
 ---
 

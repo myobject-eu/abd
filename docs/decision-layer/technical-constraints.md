@@ -76,7 +76,7 @@ Security constraints defined after the Action Layer has produced its contract ar
 
 The output of this step is one or more ADRs, ratified by the human, that cover all three areas above.
 
-These ADRs become part of the mandatory context that is provided to Claude Code before the Execution Layer begins. Claude Code does not make assumptions about stack and environment when explicit constraints are available. It operates within the defined perimeter.
+These ADRs become part of the mandatory context that is provided to the coding agent before the Execution Layer begins. The coding agent does not make assumptions about stack and environment when explicit constraints are available. It operates within the defined perimeter.
 
 If a technical constraint changes after the Exit Checklist has been passed, the change requires an explicit ADR documenting the modification and its impact on existing ADRs and the Actions List. The Exit Checklist is then re-executed.
 
