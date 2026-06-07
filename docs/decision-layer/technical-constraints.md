@@ -89,11 +89,3 @@ The LLM will not mark the technical constraints as complete until all three area
 Vague answers are not accepted. "We will use a cloud provider" is not a platform decision. "We will use a database" is not a persistence decision. The LLM asks follow-up questions until the constraints are specific enough to be actionable.
 
 If the human cannot answer a constraint question at this stage, that uncertainty is itself recorded in the ADR as a known open point, with a decision on how and when it will be resolved before the Action Layer begins.
-
----
-
-## Reference
-
-- ADR-0007 – Technical Constraints as a prerequisite of the Decision Layer
-- ADR-0006 – Exit Checklist as mandatory gate before the Action Layer
-- ADR-0005 – Extension of the Decision Layer with the Domain Analysis phase

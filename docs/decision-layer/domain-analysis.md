@@ -123,10 +123,3 @@ The LLM will not proceed to produce architectural ADRs until the Domain Analysis
 If the human attempts to skip this step, the LLM surfaces the missing areas and proposes how to complete them before moving forward.
 
 If the human insists on proceeding without completing the Domain Analysis, the LLM requires a ratified ADR that explicitly documents the decision to proceed with an incomplete domain map and the risks accepted.
-
----
-
-## Reference
-
-- ADR-0005 – Extension of the Decision Layer with the Domain Analysis phase
-- ADR-0006 – Exit Checklist as mandatory gate before the Action Layer

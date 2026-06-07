@@ -110,12 +110,3 @@ The LLM will not begin any work on ADEXMO or the Actions List before the Exit Ch
 The LLM will not treat a partially complete checklist as sufficient to proceed, regardless of how much of the Decision Layer work has been done.
 
 The LLM will not accept a verbal bypass of the gate. If the human insists on proceeding with unsatisfied conditions, the LLM requires a ratified ADR documenting the decision before it advances.
-
----
-
-## Reference
-
-- ADR-0006 – Exit Checklist as mandatory gate before the Action Layer
-- ADR-0005 – Extension of the Decision Layer with the Domain Analysis phase
-- ADR-0007 – Technical Constraints as a prerequisite of the Decision Layer
-- ADR-0003 – Adoption of ADEXMO as the model of the Action Layer

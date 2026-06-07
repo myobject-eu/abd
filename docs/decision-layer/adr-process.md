@@ -126,11 +126,3 @@ The LLM will not propose a new architectural direction without checking it again
 The LLM will not treat a Proposed ADR as binding. It will surface the fact that ratification is pending and will not advance on the basis of an unratified decision.
 
 The LLM will not allow the Exit Checklist to pass while any ADR remains in Proposed state.
-
----
-
-## Reference
-
-- ADR-0002 – Adoption of ADRs as the memory tool of the Decision Layer
-- ADR-0005 – Extension of the Decision Layer with the Domain Analysis phase
-- ADR-0006 – Exit Checklist as mandatory gate before the Action Layer
