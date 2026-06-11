@@ -1,4 +1,4 @@
-# security-model-definition.md
+# Security Model Definition
 
 ## Purpose
 

@@ -92,7 +92,7 @@ For the most common stack combinations, ABD provides Presets: precompiled Steeri
 
 A Preset is not a final file. It must be reviewed and customized with project-specific details before use. It eliminates the overhead of starting from scratch and reduces the risk of incomplete configurations in critical areas like security.
 
-See `presets/` for available Presets.
+See [Presets](https://github.com/myobject-eu/abd/blob/main/presets/README.md) for documentation and available configurations.
 
 ---
 

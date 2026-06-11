@@ -44,8 +44,3 @@ The process is iterative and validated between the LLM and the human in five pha
 5. The LLM produces the final Actions List
 
 If during phase 3 a case emerges that is not covered by any existing ADR, the process returns to the Decision Layer for the production of the relevant ADR before proceeding.
-
-## Related decisions
-
-- ADR-0003 – Adoption of ADEXMO as the Action Layer model
-- ADR-0009 – Action Layer operative process in ABD

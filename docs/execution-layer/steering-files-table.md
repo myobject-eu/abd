@@ -1,4 +1,4 @@
-# steering-files-table.md
+# Steering Files Table
 
 ## Purpose
 

@@ -1,4 +1,4 @@
-# AGENTS-definition.md
+# AGENTS definition
 
 ## What is AGENTS.md
 

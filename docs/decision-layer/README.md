@@ -101,14 +101,3 @@ ADRs are the mechanism that makes ABD sustainable over time. They are the answer
 - What decisions have already been made?
 
 When an LLM loads the project ADRs at the start of a new session, it does not start from zero. It starts from the accumulated memory of every decision the project has made. This is what makes coordination across sessions, across team members, and across companies possible.
-
----
-
-## Reference
-
-- ADR-0001 – Adoption of the Action-Based Development method
-- ADR-0002 – Adoption of ADRs as the memory tool of the Decision Layer
-- ADR-0005 – Extension of the Decision Layer with the Domain Analysis phase
-- ADR-0006 – Exit Checklist as mandatory gate before the Action Layer
-- ADR-0007 – Technical Constraints as a prerequisite of the Decision Layer
-- ADR-0008 – Separation between system documentation and project ADRs
