@@ -57,11 +57,19 @@ Before ending a session, or before a significant change of phase, update `tassel
 
 **File requirement**: where the approval requirements reference a file, that file must exist in the project repository and, where applicable, be ratified by the human before the Tassello can be marked Fixed in `tasselli-status.md`. Updating `tasselli-status.md` without the corresponding artifact misrepresents the project state.
 
-**`tasselli-status.md` format**: a Current position section (active layer, current Tassello code and name, last updated date), followed by one `###` heading per Tassello (`### <code> – <artifact name>`), each with three fields: `Status` (`Pending`, `In progress`, `Fixed`, or `Skipped`), `Fixed on` (date, populated only when Status is Fixed), and `Notes` (free text, used to justify Skipped or record non-standard iterations).
+**`tasselli-status.md` format**: a Current position section (active layer, current Tassello code and name, last updated date), followed by one `###` heading per Tassello (`### <code> – <artifact name>`), each with three fields: `Status` (`Pending`, `In progress`, `Fixed`, or `Skipped`) and `Fixed on` (date, populated only when Status is Fixed). For `Pending`, `Fixed`, and `Skipped`, `Notes` is a short free-text line (used in particular to justify `Skipped`). For `In progress`, `Notes` is a list with three fields: `Findings` (what has been produced so far and what is missing or ambiguous), `Impact` (which subsequent Tasselli depend on resolving this), and `Next step` (the concrete action the next session should take). This structure exists so a Tassello left open across sessions can be resumed without losing context; it is not a format to produce on every check.
 
 **Tasselli 1.01-1.11**: their Reference points to the ADEXMO Recommended Path, not to ABD documentation. Before producing any of these, consult the corresponding section of `from-analysis-to-actions-list.md` in the ADEXMO repository (https://github.com/myobject-eu/adexmo) for its definition, structure, and Stop Condition. These eleven artifacts are not separate project files: their content is consolidated into the Domain Analysis ADR (1.12) and the Technical Constraints ADR (1.13).
 
 **Intervention**: if a Tassello is not in sede when the human asks to move to the next phase, or a decision is iterated without converging toward ratification, the LLM signals this explicitly before proceeding. The LLM does not block the human's decision, but does not silently proceed as if the Tassello were satisfied.
+
+**Response modes**: when the LLM identifies a problem with a Tassello, it responds in one of three ways, depending on the nature of the problem.
+
+- **Local refinement**: if the candidate artifact has a resolvable flaw, for example an ambiguous Domain boundary or an Action with overlapping rules, the LLM proposes a corrected version before asking the human to decide. See [Domain Validation](https://github.com/myobject-eu/abd/blob/main/docs/action-layer/domain-validation.md) for an example.
+- **Structural escalation**: if the problem cannot be resolved within the current Tassello because no ratified ADR covers it, the LLM does not attempt a local fix. It escalates immediately as a Gap ADR (Tassello 1.16) per [ADR Ratification and Gap Management](https://github.com/myobject-eu/abd/blob/main/docs/decision-layer/adr-ratification.md).
+- **Stalemate crystallization**: if a decision is iterated repeatedly without converging toward ratification, the LLM proposes crystallizing the current state into an ADR for ratification, rather than continuing to iterate indefinitely.
+
+In the Execution Layer, the equivalent of local refinement is the three-attempt CLI test loop described in [Action Implementation](https://github.com/myobject-eu/abd/blob/main/docs/execution-layer/action-implementation.md); the equivalent of structural escalation is returning to the Action Layer for contract revision.
 
 ---
 

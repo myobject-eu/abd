@@ -8,6 +8,42 @@ Marking a Tassello as Fixed in `tasselli-status.md` requires the corresponding a
 
 ---
 
+## Tasselli Status Format
+
+`abd/tasselli-status.md` is a project-level artifact, versioned in the project repository alongside `AGENTS.md`, that tracks progress against the sequence defined above. It is the persistent record a session reads to know where the project stands, and the dashboard a developer or analyst can read without querying the agent.
+
+The file has a **Current position** header, recording the active layer, the code and name of the current Tassello, and the date of the last update.
+
+Below the header, every Tassello from the tables above is represented as a `###` heading (`### <code> – <artifact name>`), with two fixed fields and one variable field:
+
+- **Status**: one of `Pending`, `In progress`, `Fixed`, `Skipped`
+  - `Pending`: the Tassello has not yet been addressed
+  - `In progress`: work has started but the Tassello has not yet reached maturity
+  - `Fixed`: the Tassello is mature and has been ratified by the human
+  - `Skipped`: the Tassello is Selective or Optional and was not produced
+- **Fixed on**: the ratification date, populated only when Status is `Fixed`
+- **Notes**: for `Pending`, `Fixed`, and `Skipped`, a short free-text line, used in particular to record the reason for `Skipped`. For `In progress`, Notes is structured as three sub-fields: **Findings** (what has been produced so far and what is missing or ambiguous), **Impact** (which subsequent Tasselli depend on resolving this), and **Next step** (the concrete action the next session should take).
+
+Example of a Tassello left open across sessions:
+
+```markdown
+### 1.09 – Domain Map
+- Status: In progress
+- Fixed on:
+- Notes:
+  - Findings: Three Domains drafted. Boundary between Billing and Order Management unresolved.
+  - Impact: Blocks Tassello 2.01 until the boundary is decided.
+  - Next step: Propose two boundary options to the human for ratification.
+```
+
+For the Tasselli that iterate per Action (3.10, 3.11), the entry in `tasselli-status.md` represents the aggregate state of the layer, not the per-Action detail. The per-Action detail remains in the status column of `actions-list.md`.
+
+`tasselli-status.md` does not duplicate the Reference or Approval requirements columns above: for those, the agent and the human consult this document. The status file records only progress against it.
+
+No per-row "last updated" field is kept: row-level change history is delegated to the repository's version control. `Fixed on` records a specific event, ratification, not a generic last-modified timestamp.
+
+---
+
 ## Layer 1 – Decision Layer
 
 | Code | Artifact | Reference | Type | Approval requirements |

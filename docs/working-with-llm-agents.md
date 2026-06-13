@@ -50,6 +50,8 @@ First, the method must produce artifacts that give the agent an unambiguous sour
 
 Second, the method must keep the human in the loop at the points where decisions are made, not after the code has been written. The human guides the agent through decision-making; the agent formalizes and expands. When the agent encounters a gap, it does not fill it autonomously: it surfaces it and waits for a decision. The discipline is built into the process, not left to individual vigilance.
 
+Self-correction is structured, not ad hoc. When the agent identifies a problem with an artifact, it responds in one of three ways, applied consistently across all three layers. If the flaw is local and resolvable, such as an ambiguous boundary between two Domains, the agent proposes a corrected version before asking the human to decide. If the problem is structural, meaning no ratified decision covers the case, the agent does not attempt a local fix: it escalates immediately, and the gap becomes a new decision to ratify. If a decision is being iterated repeatedly without converging, the agent proposes crystallizing the current state into a ratified decision rather than continuing to iterate indefinitely. The test-and-iterate loop used for code is the same mechanism applied to implementation: a resolvable failure is refined locally, up to a limit, before escalating to the developer.
+
 ---
 
 ## How ABD addresses these problems
