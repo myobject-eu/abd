@@ -30,16 +30,6 @@ Each layer inherits the clarity of the previous one. Every step eliminates a cla
 
 [![ABD Diagram](docs/assets/abd_layers_schema.png)](docs/assets/abd_layers_schema.png)
 
-## Tasselli
-
-ABD breaks down the three layers into a sequence of **Tasselli**: completeness conditions, each with explicit approval requirements, that must be reached in order before the corresponding phase is considered concluded.
-
-A Tassello is not satisfied merely because its artifact exists. It is satisfied when the artifact is mature enough to support the next phase without transmitting gaps or ambiguities. The LLM evaluates both presence and maturity, and signals when a Tassello is not yet in place, when a phase is being closed too quickly, or when a decision is being iterated without converging toward ratification.
-
-The complete sequence, with codes, artifacts, references, types, and approval requirements, is defined in [ABD Tasselli](docs/abd-tasselli.md). Project-level progress against this sequence is tracked in `abd/tasselli-status.md`, a versioned file in the project repository that records, for each Tassello, its status, the date it was fixed, and any relevant notes.
-
-Marking a Tassello as Fixed requires the corresponding artifact, where one is specified, to exist in the project repository and to be ratified by the human. Updating `tasselli-status.md` without the corresponding artifact misrepresents the state of the project.
-
 ### Decision Layer
 
 The Decision Layer is where architectural decisions are made and ratified. It is not an analysis tool. Traditional analysis -- macro analysis, micro analysis, use cases, domain modeling -- must be completed before the Decision Layer starts. The Decision Layer translates the conclusions of that analysis into explicit, traceable architectural decisions.
@@ -65,6 +55,18 @@ The Execution Layer is where the coding agent generates the project code. It has
 During **Execution Layer Setup**, the human and the coding agent produce the Steering Files: a set of structured Markdown documents that together constitute the complete operational context for code generation. Stack, integrations, database schema, API contracts, security model, UI specifications, and Action dependencies are all declared explicitly before a single line of code is written.
 
 During **Execution Layer Process**, the coding agent reads the Steering Files through `AGENTS.md` and develops the Actions one by one, following the dependency order declared in `action-dependencies.md`. Each Action is developed, tested, and validated before the next one starts.
+
+---
+
+## Tasselli
+
+ABD breaks down the three layers into a sequence of **Tasselli**: completeness conditions, each with explicit approval requirements, that must be reached in order before the corresponding phase is considered concluded.
+
+A Tassello is not satisfied merely because its artifact exists. It is satisfied when the artifact is mature enough to support the next phase without transmitting gaps or ambiguities. The LLM evaluates both presence and maturity, and signals when a Tassello is not yet in place, when a phase is being closed too quickly, or when a decision is being iterated without converging toward ratification.
+
+The complete sequence, with codes, artifacts, references, types, and approval requirements, is defined in [ABD Tasselli](docs/abd-tasselli.md). Project-level progress against this sequence is tracked in `abd/tasselli-status.md`, a versioned file in the project repository that records, for each Tassello, its status, the date it was fixed, and any relevant notes.
+
+Marking a Tassello as Fixed requires the corresponding artifact, where one is specified, to exist in the project repository and to be ratified by the human. Updating `tasselli-status.md` without the corresponding artifact misrepresents the state of the project.
 
 ---
 
