@@ -103,17 +103,17 @@ Read all Steering Files before starting. Do not infer information that is declar
 
 Not all coding agents read `AGENTS.md` natively or support a simple redirect mechanism. The table below documents how each major coding agent integrates with `AGENTS.md` in ABD projects.
 
-| Coding Agent | Integration method | Additional file required |
-| --- | --- | --- |
-| **Codex CLI** | Reads `AGENTS.md` natively from the project root | None |
-| **Windsurf Cascade** | Reads `AGENTS.md` natively from the project root | None |
-| **Cline** | Reads `AGENTS.md` as a supported format | None |
-| **GitHub Copilot** | Reads `AGENTS.md` as agent instructions | None |
-| **Claude Code** | Reads `CLAUDE.md`; redirect to `AGENTS.md` via `@AGENTS.md` | `CLAUDE.md` with one line: `@AGENTS.md` |
-| **Gemini CLI** | Reads `GEMINI.md`; redirect to `AGENTS.md` via `@AGENTS.md` | `GEMINI.md` with one line: `@AGENTS.md` |
-| **Cursor** | Reads `.cursor/rules/*.mdc`; reference `AGENTS.md` from an always-apply rule | `.cursor/rules/abd.mdc` (see note below) |
-| **Aider** | No automatic file loading; manual load required | None (see note below) |
-| **Roo Code** | Reads `.roo/rules/` or `.roorules`; reference `AGENTS.md` from a rule file | `.roo/rules/abd.md` referencing `AGENTS.md` |
+| Coding Agent | Integration method | Additional file required | Skill loading |
+|---|---|---|---|
+| **Codex CLI** | Reads `AGENTS.md` natively from the project root | None | `SKILL.md` via skills.sh |
+| **Windsurf Cascade** | Reads `AGENTS.md` natively from the project root | None | `SKILL.md` via skills.sh |
+| **Cline** | Reads `AGENTS.md` as a supported format | None | `SKILL.md` via skills.sh |
+| **GitHub Copilot** | Reads `AGENTS.md` as agent instructions | None | `SKILL.md` via skills.sh |
+| **Claude Code** | Reads `CLAUDE.md`; redirect to `AGENTS.md` via `@AGENTS.md` | `CLAUDE.md` with one line: `@AGENTS.md` | `SKILL.md` via skills.sh |
+| **Gemini CLI** | Reads `GEMINI.md`; redirect to `AGENTS.md` via `@AGENTS.md` | `GEMINI.md` with one line: `@AGENTS.md` | To be verified |
+| **Cursor** | Reads `.cursor/rules/*.mdc`; reference `AGENTS.md` from an always-apply rule | `.cursor/rules/abd.mdc` (see note below) | To be verified |
+| **Aider** | No automatic file loading; manual load required | None (see note below) | To be verified |
+| **Roo Code** | Reads `.roo/rules/` or `.roorules`; reference `AGENTS.md` from a rule file | `.roo/rules/abd.md` referencing `AGENTS.md` | To be verified |
 
 **Note on Claude Code and Gemini CLI**
 

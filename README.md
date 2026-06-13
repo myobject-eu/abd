@@ -138,7 +138,7 @@ If you are setting up the Execution Layer for a project, start from `docs/execut
 
 ADEXMO defines the Action pattern: atomic, single-responsibility units of business logic with typed inputs and outputs, independent of framework and transport layer. ABD adopts ADEXMO as the foundation of the Action Layer and extends it with the Decision Layer and the Execution Layer.
 
-Without ABD, ADEXMO is a coding pattern. With ABD, it becomes a full development pipeline where every Action is derived from ratified decisions, every dependency is declared explicitly, and the coding agent has the context it needs to generate consistent code from the first session to the last.
+Without ABD, ADEXMO defines the executable behavior model. With ABD, that model becomes part of a controlled development pipeline for coding agents: every Action is derived from ratified decisions, every dependency is declared explicitly, and the coding agent has the context it needs to generate consistent code from the first session to the last.
 
 ---
 
