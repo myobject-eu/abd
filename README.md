@@ -30,13 +30,25 @@ Each layer inherits the clarity of the previous one. Every step eliminates a cla
 
 [![ABD Diagram](docs/assets/abd_layers_schema.png)](docs/assets/abd_layers_schema.png)
 
+## Tasselli
+
+ABD breaks down the three layers into a sequence of **Tasselli**: completeness conditions, each with explicit approval requirements, that must be reached in order before the corresponding phase is considered concluded.
+
+A Tassello is not satisfied merely because its artifact exists. It is satisfied when the artifact is mature enough to support the next phase without transmitting gaps or ambiguities. The LLM evaluates both presence and maturity, and signals when a Tassello is not yet in place, when a phase is being closed too quickly, or when a decision is being iterated without converging toward ratification.
+
+The complete sequence, with codes, artifacts, references, types, and approval requirements, is defined in [ABD Tasselli](docs/abd-tasselli.md). Project-level progress against this sequence is tracked in `abd/tasselli-status.md`, a versioned file in the project repository that records, for each Tassello, its status, the date it was fixed, and any relevant notes.
+
+Marking a Tassello as Fixed requires the corresponding artifact, where one is specified, to exist in the project repository and to be ratified by the human. Updating `tasselli-status.md` without the corresponding artifact misrepresents the state of the project.
+
 ### Decision Layer
 
 The Decision Layer is where architectural decisions are made and ratified. It is not an analysis tool. Traditional analysis -- macro analysis, micro analysis, use cases, domain modeling -- must be completed before the Decision Layer starts. The Decision Layer translates the conclusions of that analysis into explicit, traceable architectural decisions.
 
 An architectural decision is any choice that constrains the design or implementation of the system: stack, security model, data model conventions, API style, dependency management.
 
-Each decision is captured in an Architecture Decision Record (ADR): a structured document that declares context, problem, decision, alternatives considered, and consequences. ADRs live in the project repository, versioned alongside the code. The language in which ADRs are written is a team convention: each team writes them in the language that works best for its members.
+Each decision is captured in an Architecture Decision Record (ADR): a structured document that declares context, problem, decision, alternatives considered, consequences, and risks with their mitigations. ADRs are produced through a guided conversation between the human and the LLM: the LLM proposes options with their trade-offs and drafts the ADR, the human reviews and ratifies it. An ADR moves from Proposed to Approved upon ratification, and to Superseded if a later ADR revises or reverses it. Only Approved ADRs are authoritative.
+
+ADRs are committed to the development project repository, under `abd/decisions/`. They are the memory of the project: every decision that constrains the Action Layer and the Execution Layer is traceable back to the ADR that ratified it. The language in which ADRs are written is a team convention: each team writes them in the language that works best for its members.
 
 The Decision Layer ends when all relevant architectural choices have been ratified and the Exit Checklist is satisfied. No development work starts before this layer is complete.
 
@@ -62,9 +74,19 @@ During **Execution Layer Process**, the coding agent reads the Steering Files th
 abd/
 ├── docs/
 │   ├── abd-in-one-page.md          Quick overview of the method
+│   ├── abd-tasselli.md             Full Tasselli sequence across all layers, with approval requirements
+│   ├── working-with-llm-agents.md  Why artifacts are agent-generated and human-validated
 │   ├── decision-layer/             ADR index and process documentation
-│   ├── action-layer/               Actions List process documentation
-│   └── execution-layer/            Steering File definitions and table
+│   │   ├── README.md
+│   │   ├── domain-analysis.md      Domain Analysis ADR guidance (Tassello 1.12)
+│   │   ├── technical-constraints.md  Technical Constraints ADR guidance (Tassello 1.13)
+│   │   ├── adr-process.md          Architectural ADR process (Tassello 1.14)
+│   │   ├── exit-checklist.md       Exit Checklist gate before the Action Layer (Tassello 1.15)
+│   │   └── adr-ratification.md     ADR structure, states, ratification, and gap management (Tassello 1.16)
+│   ├── action-layer/                Actions List process documentation
+│   │   ├── README.md
+│   │   └── domain-validation.md    Domain candidate validation criteria (Tassello 2.01)
+│   └── execution-layer/             Steering File definitions and table
 │       ├── README.md
 │       ├── steering-files-table.md
 │       ├── actions-list-definition.md
@@ -76,8 +98,10 @@ abd/
 │       ├── security-model-definition.md
 │       ├── ui-spec-definition.md
 │       ├── action-dependencies-definition.md
+│       ├── action-implementation.md
 │       └── AGENTS-definition.md
 └── presets/
+    ├── README.md                   Presets overview, naming convention, and priorities
     ├── security-model/             Precompiled security configurations by stack
     ├── ui-spec/                    Precompiled UI specifications by framework
     ├── stack-config/               Precompiled stack configurations
