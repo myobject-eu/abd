@@ -1,7 +1,10 @@
 ---
 name: abd
 description: "Action-Based Development (ABD) is a structured methodology for AI-assisted software development. Use this skill whenever you are operating on a project that follows ABD, or when the user asks you to apply ABD to a new project. Covers all three layers: Decision Layer (ADR-based decision tracking), Action Layer (ADEXMO Actions List production), and Execution Layer (supervised code generation), governed by a sequence of Tasselli with explicit approval requirements. Trigger on phrases like 'follow ABD', 'apply ABD', 'we're using ABD', 'start the Decision Layer', 'produce the Actions List', 'start the Execution Layer', or any reference to ADRs, Actions List, Steering Files, AGENTS.md, or tasselli-status.md in a project context."
+dependencies:
+  - adexmo
 ---
+> **Prerequisite:** this skill depends on the `adexmo` skill. Install it before this skill with `npx skills add myobject-eu/adexmo`.
 
 # Action-Based Development (ABD)
 
@@ -59,7 +62,7 @@ Before ending a session, or before a significant change of phase, update `tassel
 
 **`tasselli-status.md` format**: a Current position section (active layer, current Tassello code and name, last updated date), followed by one `###` heading per Tassello (`### <code> – <artifact name>`), each with three fields: `Status` (`Pending`, `In progress`, `Fixed`, or `Skipped`) and `Fixed on` (date, populated only when Status is Fixed). For `Pending`, `Fixed`, and `Skipped`, `Notes` is a short free-text line (used in particular to justify `Skipped`). For `In progress`, `Notes` is a list with three fields: `Findings` (what has been produced so far and what is missing or ambiguous), `Impact` (which subsequent Tasselli depend on resolving this), and `Next step` (the concrete action the next session should take). This structure exists so a Tassello left open across sessions can be resumed without losing context; it is not a format to produce on every check.
 
-**Tasselli 1.01-1.11**: their Reference points to the ADEXMO Recommended Path, not to ABD documentation. Before producing any of these, consult the corresponding section of `from-analysis-to-actions-list.md` in the ADEXMO repository (https://github.com/myobject-eu/adexmo) for its definition, structure, and Stop Condition. These eleven artifacts are not separate project files: their content is consolidated into the Domain Analysis ADR (1.12) and the Technical Constraints ADR (1.13).
+**Tasselli 1.01-1.11, 2.02, 2.03**: their Reference points to the ADEXMO skill - Recommended Path, not to ABD documentation. Before producing any of these, consult the corresponding section of the ADEXMO skill (adexmo) for its definition, structure, and Stop Condition. Tasselli 1.01-1.11 are not separate project files: their content is consolidated into the Domain Analysis ADR (1.12) and the Technical Constraints ADR (1.13). Tasselli 2.02 and 2.03 produce actions-list.md in the project repository.
 
 **Intervention**: if a Tassello is not in sede when the human asks to move to the next phase, or a decision is iterated without converging toward ratification, the LLM signals this explicitly before proceeding. The LLM does not block the human's decision, but does not silently proceed as if the Tassello were satisfied.
 
@@ -87,15 +90,15 @@ In the Execution Layer, the equivalent of local refinement is the three-attempt 
 
 ## Action Layer
 
-**Purpose:** translate ratified ADRs into the Actions List, the executable contract of the system, following ADEXMO. See: https://github.com/myobject-eu/adexmo
+Purpose: translate ratified ADRs into the Actions List, the executable contract of the system, following ADEXMO. The ADEXMO skill (adexmo) is a prerequisite of this skill and must be installed and active in the session. Refer to it for Domain validation, Draft Actions List, and Validated Actions List production.
 
 **Tasselli:** 2.01 through 2.03, see [ABD Tasselli](https://github.com/myobject-eu/abd/blob/main/docs/abd-tasselli.md#layer-2--action-layer).
 
 **Process:**
 1. Read all ratified ADRs.
 2. Propose and validate Domain candidates per [Domain Validation](https://github.com/myobject-eu/abd/blob/main/docs/action-layer/domain-validation.md) before defining any Action.
-3. Define Actions per validated Domain, producing the Draft Actions List.
-4. Validate the Draft Actions List with the human, producing the Validated Actions List.
+3. Define Actions per validated Domain, producing the Draft Actions List per ADEXMO skill – Recommended Path #14.
+4. Validate the Draft Actions List with the human, producing the Validated Actions List per ADEXMO skill – Recommended Path #15.
 
 **Gap handling:** if a case is found that no existing ADR covers and cannot be derived by logic from ratified ADRs, stop, signal the gap (Tassello 1.16), and return to the Decision Layer. Do not resolve gaps autonomously. The Exit Checklist is re-executed after any significant ADR addition before Action Layer work resumes.
 
@@ -105,7 +108,7 @@ In the Execution Layer, the equivalent of local refinement is the three-attempt 
 
 **Purpose:** generate working, tested, human-supervised code from the Validated Actions List.
 
-**Tasselli:** 3.01 through 3.11, see [ABD Tasselli](https://github.com/myobject-eu/abd/blob/main/docs/abd-tasselli.md#layer-3--execution-layer).
+**Tasselli:** 3.01 through 3.11, 2.02 and 2.03, see [ABD Tasselli](https://github.com/myobject-eu/abd/blob/main/docs/abd-tasselli.md#layer-3--execution-layer).
 
 **Setup:** before any code generation, produce and validate `action-dependencies.md`, `AGENTS.md`, and the Steering Files (Tasselli 3.03-3.08). Vendor-specific redirect files (`CLAUDE.md`, etc.) contain a single line: `@AGENTS.md`. Every Steering File is validated by the human before code generation begins (Tassello 3.09).
 
